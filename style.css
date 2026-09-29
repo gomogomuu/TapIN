@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+}
+
+.navbar {
+    height: 70px;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #222;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.hero {
+    min-height: calc(70vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px 20px 20px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.tagline {
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: #777;
+    font-weight: 500;
+}
+
+.hero h1 {
+    font-size: 48px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+.button {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #111;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.products-section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 20px 60px 20px;
+}
+
+.products-section h2 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.products-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.product-card {
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+}
+
+.product-card h3 {
+    font-size: 15px;
+    font-weight: bold;
+    color: #111;
+    margin-bottom: 4px;
+}
+
+.product-card p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.profile-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+
+.profile-card {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.085);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 35px 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.015);
+}
+
+.profile-image {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 3px solid #ffffff;
+}
+
+.profile-card h1 {
+    margin-bottom: 8px;
+    font-size: 22px;
+    color: #111111;
+}
+
+.profile-card p {
+    color: #252525!important;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.profile-link {
+    display: block;
+    padding: 14px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    color: #111;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.profile-link:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.powered {
+    margin-top: 25px;
+    font-size: 11px;
+    color: #666 !important;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 36px;
+    }
+    .navbar {
+        padding: 0 20px;
+    }
+}
