@@ -32,13 +32,19 @@ const profiles = {
             { name: "Github", url: "https://github.com/gomogomuu" }
         ]
     },
-    "004": {
-        name: "Luna the Cat",
-        bio: "Professional napper. Part-time troublemaker. Full-time cutie.",
-        image: "https://placehold.co/150x150/fee2e2/b91c1c?text=Luna",
+    "FTH003": {
+        name: "Fathir Khalifa",
+        bio: "megan fox ex’s",
+        image: "images/Fathirlg.jpeg",
+        backgroundImage : "images/Fathirbg.jpeg",
+
         links: [
-            { name: "Instagram Pet", url: "https://instagram.com" },
-            { name: "TikTok Videos", url: "https://tiktok.com" }
+            { name: "Instagram", url: "https://www.instagram.com/fathirkhalifa?" },
+            { name: "TikTok", url: "https://www.tiktok.com/@logankhalifa_?" },
+            { name: "Spotify", url: "https://open.spotify.com/user/3166ewkbvykljx3l4e424in3wwvm?si=oIYmDCg3QbCI6MCoBeJsyw&utm_source=copy-link"},
+            { name: "SnapChat", url: "https://www.snapchat.com/@fathir.khalifa?invite_id=LXrVg52j&locale=en_ID&share_id=DcQlAdEXTVSw7ldmBmi8Ug&sid=98056627656c44859beeef706de0f7b0"},
+            { name: "soundCloud", url: " https://soundcloud.com/alfathir-khalifa?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"},
+            { name: "Discord", url : "https://discord.com/users/599958642455740417"}
         ]
     },
     "005": {
