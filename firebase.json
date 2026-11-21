@@ -1,0 +1,8 @@
+{
+    "firestore": { "rules": "firestore.rules" },
+    "hosting": {
+        "public": ".firebase/site",
+        "ignore": ["**/.*"],
+        "rewrites": [{ "source": "/p/**", "destination": "/profile.html" }]
+    }
+}

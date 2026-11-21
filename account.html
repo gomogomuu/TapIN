@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Akun | TapIN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">TapIN</div>
+    </header>
+    <main class="account-layout">
+        <a class="button account-back" href="index.html">Back</a>
+        <section class="account-card" aria-labelledby="account-title">
+            <nav class="account-tabs" aria-label="Akun">
+                <a id="login-tab" href="account.html">Login</a>
+                <a id="register-tab" href="account.html?mode=register">Sign In</a>
+            </nav>
+            <h1 id="account-title">Login</h1>
+            <p id="status" role="status"></p>
+            <form id="account-form">
+                <label id="username-field" hidden>Username<input name="username" autocomplete="username" maxlength="40" placeholder="Nama pengguna"></label>
+                <label>Email<input name="email" type="email" autocomplete="email" placeholder="nama@contoh.com" required></label>
+                <label id="password-field">Password<input name="password" type="password" autocomplete="current-password" placeholder="Masukkan password"></label>
+                <label id="confirm-password-field" hidden>Konfirmasi password<input name="confirmPassword" type="password" autocomplete="new-password" placeholder="Masukkan ulang password"></label>
+                <label id="dob-field" hidden>Tanggal lahir<input name="dob" type="date" autocomplete="bday"></label>
+                <a id="reset-link" href="account.html?mode=reset">Lupa password?</a>
+                <button type="submit" class="button" id="account-submit" disabled>Login</button>
+                <button type="button" class="secondary" id="google" disabled>Login dengan Google</button>
+            </form>
+            <div id="verify" class="actions" hidden>
+                <button type="button" class="button" id="confirm-email">Saya sudah verifikasi</button>
+                <button type="button" class="secondary" id="resend">Kirim ulang email</button>
+                <button type="button" class="secondary" id="switch-account">Logout</button>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="account.js"></script>
+</body>
+</html>
+
+
+
+
+

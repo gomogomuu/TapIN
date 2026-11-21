@@ -1,0 +1,62 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwner(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    match /registrations/{uid} {
+      allow get: if isOwner(uid) && request.auth.token.email_verified == true;
+      allow create: if isOwner(uid)
+        && request.resource.data.keys().hasOnly(['name', 'dob'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 40
+        && request.resource.data.dob is string
+        && request.resource.data.dob.matches('[0-9]{4}-[0-9]{2}-[0-9]{2}');
+    }
+
+    function verified() {
+      return request.auth != null && request.auth.token.email_verified == true;
+    }
+
+    match /tags/{tagId} {
+      allow get: if resource == null || resource.data.keys().hasOnly(['ownerUid']);
+    }
+
+    match /profiles/{uid} {
+      function assignedToTag() {
+        return resource.data.keys().hasOnly(['name', 'links', 'image', 'backgroundImage', 'tagId'])
+          && resource.data.get('tagId', null) is string
+          && get(/databases/$(database)/documents/tags/$(resource.data.tagId)).data.ownerUid == uid;
+      }
+
+      function tagUnchanged() {
+        return request.resource.data.get('tagId', '') ==
+          (resource == null ? '' : resource.data.get('tagId', ''));
+      }
+      function validPhoto(key) {
+        return !(key in request.resource.data)
+          || (request.resource.data[key] is string
+            && request.resource.data[key].size() <= 400000
+            && request.resource.data[key].matches('data:image/jpeg;base64,[A-Za-z0-9+/=]+'));
+      }
+
+      allow get: if (verified() && isOwner(uid)) || assignedToTag();
+      allow create, update: if isOwner(uid)
+        && request.auth.token.email_verified == true
+        && tagUnchanged()
+        && request.resource.data.keys().hasOnly(['name', 'links', 'image', 'backgroundImage', 'tagId'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 40
+        && request.resource.data.links is list
+        && request.resource.data.links.size() <= 20
+        && validPhoto('image')
+        && validPhoto('backgroundImage');
+    }
+  }
+}
+
+
+

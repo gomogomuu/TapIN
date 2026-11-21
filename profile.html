@@ -1,23 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile | TapIN</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profil | TapIN</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
-<body>
-
+<body class="profile-page">
+    <nav class="profile-nav" aria-label="Navigasi profil">
+        <a class="button" href="/">TapIN</a>
+        <a class="button" id="profile-login" href="/account.html" hidden>Login</a>
+        <div class="actions" id="profile-actions" hidden>
+            <button class="button" type="button" id="edit-profile">Edit profil</button>
+            <button class="secondary" type="button" id="logout">Logout</button>
+        </div>
+    </nav>
     <main class="profile-container">
         <div class="profile-card">
-            <img id="profileImage" src="https://placehold.co/150x150" alt="Profile Photo" class="profile-image">
-            <h1 id="profileName">Loading...</h1>
-            <p id="profileBio">Please wait while we load the profile.</p>
+            <img id="profileImage" alt="Foto profil" class="profile-image" hidden>
+            <h1 id="profileName">Memuat profil…</h1>
+            <p id="profileBio"></p>
             <div id="links" class="links"></div>
             <p class="powered">Powered by TapIN</p>
         </div>
     </main>
-
-    <script src="script.js"></script>
+    <p id="profile-status" role="status"></p>
+    <dialog id="profile-editor" aria-labelledby="editor-title">
+        <form id="profile-form">
+            <h2 id="editor-title">Edit profil</h2>
+            <label>Username<input name="username" maxlength="40" required></label>
+            <label>Foto profil<input name="avatar" type="file" accept="image/jpeg,image/png,image/webp"></label>
+            <label>Foto background<input name="background" type="file" accept="image/jpeg,image/png,image/webp"></label>
+            <fieldset>
+                <legend>Tautan profil</legend>
+                <div id="link-fields"></div>
+                <button type="button" class="secondary" id="add-link">Tambah tautan</button>
+            </fieldset>
+            <p id="edit-status" role="status"></p>
+            <div class="actions">
+                <button type="submit" class="button">Simpan</button>
+                <button type="button" class="secondary" id="cancel-edit">Batal</button>
+            </div>
+        </form>
+    </dialog>
+    <template id="link-template">
+        <div class="link-row">
+            <label>Jenis<select name="kind"></select></label>
+            <label>Judul tampilan<input name="label" maxlength="60" placeholder="Opsional"></label>
+            <label>Alamat<input name="address" maxlength="500" required></label>
+            <button type="button" class="secondary">Hapus tautan</button>
+        </div>
+    </template>
+    <script src="/script.js" defer></script>
 </body>
 </html>

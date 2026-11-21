@@ -59,46 +59,55 @@ const profiles = {
     }
 };
 
-const path = window.location.pathname;
-const matchPath = path.match(/\/p\/([a-zA-Z0-9_-]+)/);
-const urlParams = new URLSearchParams(window.location.search);
-
-const profileId = matchPath ? matchPath[1] : urlParams.get('id');
-const profile = profiles[profileId];
-
-if (profile) {
+function renderProfile(profile) {
     document.title = `${profile.name} | TapIN`;
     document.getElementById("profileName").textContent = profile.name;
-    document.getElementById("profileBio").textContent = profile.bio;
-    document.getElementById("profileImage").src = profile.image;
+    document.getElementById("profileBio").textContent = profile.bio || "";
+    const photo = document.getElementById("profileImage");
+    photo.hidden = !profile.image;
+    photo.onerror = () => { photo.hidden = true; };
+    if (profile.image) photo.src = profile.image;
+    document.body.style.backgroundImage = profile.backgroundImage
+        ? `url(${JSON.stringify(profile.backgroundImage)})`
+        : "";
 
-    if (profile.backgroundImage) {
-        document.body.style.backgroundImage = `url('${profile.backgroundImage}')`;
-        document.body.style.backgroundSize = 'cover';
-        document.body.style.backgroundPosition = 'center';
-        document.body.style.backgroundRepeat = 'no-repeat';
-        document.body.style.backgroundAttachment = 'fixed';
-    } else {
-        document.body.style.background = '#f5f5f5';
-    }
-
-    const linksContainer = document.getElementById("links");
-    linksContainer.innerHTML = "";
-
-    profile.links.forEach(link => {
+    const links = document.getElementById("links");
+    links.replaceChildren();
+    for (const link of profile.links || []) {
+        let url;
+        try {
+            url = new URL(link.url.trim());
+        } catch {
+            continue;
+        }
+        if (!["https:", "http:"].includes(url.protocol)) continue;
         const element = document.createElement("a");
-        element.href = link.url;
+        element.href = url.href;
         element.textContent = link.name;
         element.className = "profile-link";
         element.target = "_blank";
         element.rel = "noopener noreferrer";
-        linksContainer.appendChild(element);
-    });
+        links.appendChild(element);
+    }
+}
 
-} else if (window.location.pathname.includes("profile.html") || urlParams.has('id')) {
-    document.querySelector(".profile-card").innerHTML = `
-        <h1>Profile Not Found</h1>
-        <p>Profil TapIN ini tidak ditemukan atau belum terdaftar.</p>
-        <a href="index.html" class="button" style="margin-top: 20px; display:inline-block; font-size: 14px;">Kembali ke Beranda</a>
-    `;
+const urlParams = new URLSearchParams(location.search);
+const pathTag = location.pathname.match(/^\/p\/([A-Za-z0-9_-]{1,64})\/?$/)?.[1];
+const profileId = pathTag || urlParams.get("id");
+const demo = profileId === "001" ? profiles.FTH003 : Object.hasOwn(profiles, profileId) && profiles[profileId];
+
+if (demo) {
+    renderProfile({
+        ...demo,
+        image: demo.image?.replace(/^images\//, "/images/"),
+        backgroundImage: demo.backgroundImage?.replace(/^images\//, "/images/")
+    });
+} else if (pathTag || (urlParams.get("mode") === "account" && !profileId)) {
+    import("./profile-editor.js").then(({ startProfile }) => startProfile(renderProfile, pathTag)).catch(error => {
+        document.getElementById("profileName").textContent = "Profil tidak dapat dibuka";
+        document.getElementById("profileBio").textContent = error.message;
+    });
+} else {
+    document.getElementById("profileName").textContent = "Profil tidak ditemukan";
+    document.getElementById("profileBio").textContent = "Profil TapIN ini belum terdaftar.";
 }
