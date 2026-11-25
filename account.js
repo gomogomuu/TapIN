@@ -63,13 +63,30 @@ async function start() {
         status.textContent = message;
     }
 
+    function verificationPrompt(user) {
+        return "Cek kotak masuk dan folder Spam untuk " + user.email
+            + ". Setelah membuka tautan, pilih Saya sudah verifikasi.";
+    }
+
+    async function sendVerification(user) {
+        showVerification("Meminta Firebase mengirim email verifikasi…");
+        const continuation = new URL("/account.html", location.origin);
+        if (tag) continuation.searchParams.set("next", destination);
+        try {
+            await identity.sendEmailVerification(user, { url: continuation.href });
+            status.textContent = "Permintaan pengiriman diterima. " + verificationPrompt(user);
+        } catch (error) {
+            status.textContent = "Email verifikasi gagal dikirim. " + accountError(error);
+        }
+    }
+
     async function next(user) {
         await user.reload();
         if (auth.currentUser?.emailVerified) {
             await auth.currentUser.getIdToken(true);
             location.replace(destination);
         } else {
-            showVerification("Verifikasi email untuk membuka profil.");
+            showVerification(verificationPrompt(auth.currentUser) + " Jika email belum masuk, pilih Kirim ulang email.");
         }
     }
 
@@ -110,8 +127,7 @@ async function start() {
                 }
                 throw error;
             }
-            showVerification("Periksa email untuk tautan verifikasi.");
-            await identity.sendEmailVerification(user);
+            await sendVerification(user);
             return;
         }
 
@@ -123,10 +139,7 @@ async function start() {
         await next(user);
     }));
     byId("confirm-email").addEventListener("click", run(() => next(auth.currentUser)));
-    byId("resend").addEventListener("click", run(async () => {
-        await identity.sendEmailVerification(auth.currentUser);
-        status.textContent = "Email verifikasi dikirim ulang.";
-    }));
+    byId("resend").addEventListener("click", run(() => sendVerification(auth.currentUser)));
     byId("switch-account").addEventListener("click", run(async () => {
         await identity.signOut(auth);
         location.replace(tag ? "account.html?next=" + encodeURIComponent(destination) : "account.html");
@@ -149,4 +162,5 @@ if (location.hostname === "127.0.0.1") {
         status.textContent = error.code ? accountError(error) : error.message;
     });
 }
+
 

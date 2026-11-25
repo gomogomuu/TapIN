@@ -1,0 +1,434 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+}
+
+.navbar {
+    height: 70px;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #222;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.hero {
+    min-height: calc(70vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px 20px 20px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.tagline {
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: #777;
+    font-weight: 500;
+}
+
+.hero h1 {
+    font-size: 48px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+.button {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #111;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.products-section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 20px 60px 20px;
+}
+
+.products-section h2 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.products-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.product-card {
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+}
+
+.product-card h3 {
+    font-size: 15px;
+    font-weight: bold;
+    color: #111;
+    margin-bottom: 4px;
+}
+
+.product-card p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.profile-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+
+.profile-card {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.085);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 35px 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.015);
+}
+
+.profile-image {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 3px solid #ffffff;
+}
+
+.profile-card h1 {
+    margin-bottom: 8px;
+    font-size: 22px;
+    color: #111111;
+}
+
+.profile-card p {
+    color: #252525!important;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.profile-link {
+    display: block;
+    padding: 14px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    color: #111;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.profile-link:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.powered {
+    margin-top: 25px;
+    font-size: 11px;
+    color: #666 !important;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 36px;
+    }
+    .navbar {
+        padding: 0 20px;
+    }
+}
+[hidden] { display: none !important; }
+.actions { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+.actions a { color: #222; }
+button { font: inherit; cursor: pointer; }
+.button, .secondary { border: 1px solid transparent; }
+button:disabled { opacity: .55; cursor: wait; }
+.secondary { padding: .65rem .9rem; border-radius: 10px; background: #fff; border-color: #d3d3d3; color: #222; }
+.profile-page { background-size: cover; background-position: center; background-attachment: fixed; }
+.profile-nav { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem clamp(1rem, 5vw, 3rem); }
+.profile-container { min-height: calc(100vh - 82px); align-items: start; padding-top: clamp(2rem, 9vh, 6rem); }
+.profile-card { background: rgba(255, 255, 255, .91); overflow-wrap: anywhere; }
+.account-card, dialog {
+    width: min(100% - 2rem, 480px);
+    padding: clamp(1rem, 4vw, 2rem);
+    border: 1px solid #e5e5e5;
+    border-radius: 18px;
+    background: #fff;
+}
+.account-card h1 { margin: 1rem 0; }
+dialog { margin: auto; max-height: calc(100dvh - 2rem); overflow: auto; }
+dialog::backdrop { background: rgba(0, 0, 0, .55); }
+form, .link-row, #link-fields { display: grid; gap: .85rem; }
+form label { display: grid; gap: .35rem; font-weight: 600; }
+form input, form select {
+    min-width: 0;
+    width: 100%;
+    padding: .65rem;
+    font: inherit;
+    font-weight: 400;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+}
+fieldset { padding: .85rem; border: 1px solid #ddd; border-radius: 10px; min-width: 0; }
+.link-row { margin-bottom: .85rem; padding-bottom: .85rem; border-bottom: 1px solid #e5e5e5; }
+[role="status"]:not(:empty) { line-height: 1.5; margin: .75rem 0; }
+#profile-status:not(:empty) {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    padding: .75rem 1rem;
+    border-radius: 10px;
+    background: white;
+}
+
+.account-layout {
+    width: min(100% - 2rem, 480px);
+    margin: clamp(1.25rem, 6vw, 3rem) auto;
+}
+
+.account-back {
+    margin-bottom: .75rem;
+    min-height: 44px;
+}
+
+.account-card {
+    width: 100%;
+    box-shadow: 0 12px 36px rgba(24, 30, 43, .08);
+}
+
+.account-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .25rem;
+    padding: .25rem;
+    border-radius: 12px;
+    background: #f0f1f4;
+}
+
+.account-tabs a {
+    padding: .7rem .5rem;
+    border-radius: 9px;
+    color: #404858;
+    text-align: center;
+    font-size: .875rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.account-tabs a[aria-current="page"] {
+    color: #171c26;
+    background: white;
+    box-shadow: 0 1px 4px rgba(24, 30, 43, .13);
+}
+
+.account-card h1 {
+    margin: 1.5rem 0 1.15rem;
+    font-size: clamp(1.65rem, 5vw, 2rem);
+    letter-spacing: -.025em;
+}
+
+#account-form { gap: 1rem; }
+
+#account-form label {
+    gap: .45rem;
+    color: #262c39;
+    font-size: .875rem;
+}
+
+#account-form input {
+    min-height: 48px;
+    padding: .7rem .85rem;
+    border: 1px solid #afb6c3;
+    border-radius: 10px;
+    background: #fcfcfd;
+    color: #171c26;
+    font-size: 1rem;
+}
+
+#account-form input::placeholder { color: #687082; }
+
+#account-form input:focus {
+    border-color: #3557c0;
+    background: white;
+}
+
+.account-card :focus-visible {
+    outline: 2px solid #3557c0;
+    outline-offset: 3px;
+}
+
+#reset-link {
+    justify-self: end;
+    color: #29479d;
+    font-size: .875rem;
+    font-weight: 600;
+    text-underline-offset: 3px;
+}
+
+#account-form button { min-height: 46px; }
+.account-card button:disabled { cursor: default; }
+.account-card #status:not(:empty) {
+    padding: .75rem .9rem;
+    border-radius: 10px;
+    background: #edf1fa;
+    color: #293852;
+    font-size: .875rem;
+}
+
+/* Give touch controls and panels room on phones and tablets. */
+@media (max-width: 1024px) {
+    .profile-nav, .navbar {
+        min-height: 70px;
+        height: auto;
+        align-items: center;
+        flex-wrap: wrap;
+        column-gap: 1rem;
+        row-gap: .5rem;
+        padding: .65rem clamp(.75rem, 4vw, 2rem);
+    }
+
+    .navbar .actions:not(.home-account-links), #profile-actions {
+        justify-content: flex-end;
+        gap: .5rem;
+        min-width: 0;
+    }
+
+    .navbar a, .profile-nav .button, .profile-nav .secondary, .account-tabs a, #reset-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+    }
+
+    #profile-form :is(button, input, select), #verify button {
+        min-height: 44px;
+    }
+
+    :is(.account-card, #profile-editor) {
+        overflow-wrap: anywhere;
+    }
+
+    #profile-editor {
+        max-height: calc(100vh - 1rem);
+        max-height: calc(100dvh - 1rem);
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #profile-form input[type="file"] {
+        max-width: 100%;
+    }
+
+    .profile-container {
+        min-height: calc(100svh - 70px);
+    }
+
+    .profile-card {
+        padding-inline: clamp(1rem, 4vw, 1.75rem);
+    }
+
+    #profile-status:not(:empty) {
+        inset-inline-end: max(.75rem, env(safe-area-inset-right));
+        bottom: max(.75rem, env(safe-area-inset-bottom));
+        max-inline-size: calc(100% - 2rem);
+        overflow-wrap: anywhere;
+    }
+}
+
+@media (pointer: coarse) {
+    .profile-page { background-attachment: scroll; }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        min-height: auto;
+        padding: 3.25rem 1rem 2rem;
+    }
+
+    .profile-nav :is(.button, .secondary) {
+        padding-inline: .85rem;
+    }
+
+    #profile-editor, .account-layout {
+        width: calc(100% - 1.25rem);
+    }
+
+    #profile-form .actions > button {
+        flex: 1 1 auto;
+    }
+}
+
+
+.navbar .home-account-links {
+    gap: clamp(1.25rem, 4vw, 2rem);
+}
+
+.navbar .home-account-links a {
+    text-decoration: underline;
+    text-underline-offset: .25em;
+}

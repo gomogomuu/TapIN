@@ -91,6 +91,8 @@ export async function startProfile(renderProfile, tagId) {
     const ownerUid = tagId ? binding.data()?.ownerUid : user.uid;
     if (!ownerUid) {
         byId("profileName").textContent = "Tag belum terhubung";
+        byId("profileBio").textContent = "Tag " + tagId
+            + " belum dipasangkan ke profil. Hubungi admin TapIN untuk memasangkannya.";
         return;
     }
 
@@ -203,6 +205,7 @@ export async function startProfile(renderProfile, tagId) {
     });
     byId("edit-profile").hidden = false;
 }
+
 
 
 
